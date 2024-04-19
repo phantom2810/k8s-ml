@@ -221,6 +221,12 @@ to monitor the pod's resource usage in real time (This will be updated every 5 s
 
 Here Siege will generate traffic to a "test" endpoint on your website, which requests a prediction for a pre-saved image, for 30 seconds with a concurrency level of 10 users. After it finishes execution, make a note of key results - how many transactions were served successfully, how many failed, the transaction rate, and what the average response time was (note that this includes inference time, as well as several other elements).
 
+Note: you may see some instances of
+
+    [error] socket: unable to connect sock.c:249: Connection refused
+
+in the Siege output. This is an indication that in the tests, some of the connections failed entirely (rather than just waiting a long time!) because the server is under such heavy load.
+
 ### Stop the deployment
 
 When you are done with your experiment, make sure to delete the deployment and service. To delete, run the command:
