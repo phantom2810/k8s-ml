@@ -25,7 +25,7 @@ This sequence of exercises will introduce you to some basic principles of cloud 
 
 This sequence assumes that you have already deployed a Kubernetes cluster on Chameleon, using [this recipe](https://chameleoncloud.org/experiment/share/9bae9a8a-68fa-402c-ae51-41431eb78732), and that you can SSH into the primary node in your cluster.
 
-On the primary node in your cluster, run
+On the primary node in your cluster, "node-0", run
 
     git clone --single-branch --branch gh-pages https://github.com/teaching-on-testbeds/k8s-ml.git
 
@@ -55,6 +55,8 @@ The source code for our basic application is inside the `app` subdirectory insid
         -   Dockerfile
         -   requirements.txt
         -   model.keras
+
+You can browse these files in the web interface [here](https://github.com/teaching-on-testbeds/k8s-ml/tree/gh-pages/app).
 
 Note that a saved model - `model.keras` - is inside this directory. Then, inside `app.py`,
 
@@ -106,7 +108,7 @@ Now that we have containerized our application, we can run it! Let's run it now,
 
 Here,
 
--   `-d` is for detach mode - so we can leave it running in the background.
+-   `-d` is for detach mode - so we can leave it running in the background. (If you need to run a container in the foreground, for debugging purposes, you will omit this argument.)
 -   `-p` is to assign the mapping between "incoming request port" (32000) and "container port' (5000).
 
 You can see the list of running containers with
