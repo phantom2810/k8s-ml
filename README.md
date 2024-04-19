@@ -60,30 +60,22 @@ You can browse these files in the web interface [here](https://github.com/teachi
 
 Note that a saved model - `model.keras` - is inside this directory. Then, inside `app.py`,
 
--   when `app.py` runs, it loads the saved model:
-
-```{=html}
-<!-- -->
-```
-    model = load_model("model.keras")
+-   when `app.py` runs, it loads the saved model: `model = load_model("model.keras")`
 
 -   when a user uploads an images file to the app, or when a special "test" path in the URL is used, a `model_predict` function is called that returns the predicted class of the image:
 
-```{=html}
-<!-- -->
-```
-    def model_predict(img_path, model):
-        im = Image.open(img_path).convert('RGB')
-        image_resized = im.resize(target_size, Image.BICUBIC)
-        test_sample = np.array(image_resized)/255.0
-        test_sample = test_sample.reshape(1, target_size[0], target_size[1], 3)
-        classes = np.array(["Bread", "Dairy product", "Dessert", "Egg", "Fried food",
-        "Meat", "Noodles/Pasta", "Rice", "Seafood", "Soup",
-        "Vegetable/Fruit"])
-        test_probs = model.predict(test_sample)
-        most_likely_classes = np.argmax(test_probs.squeeze())
-        
-        return classes[most_likely_classes], test_probs.squeeze()[most_likely_classes]
+          def model_predict(img_path, model):
+              im = Image.open(img_path).convert('RGB')
+              image_resized = im.resize(target_size, Image.BICUBIC)
+              test_sample = np.array(image_resized)/255.0
+              test_sample = test_sample.reshape(1, target_size[0], target_size[1], 3)
+              classes = np.array(["Bread", "Dairy product", "Dessert", "Egg", "Fried food",
+              "Meat", "Noodles/Pasta", "Rice", "Seafood", "Soup",
+              "Vegetable/Fruit"])
+              test_probs = model.predict(test_sample)
+              most_likely_classes = np.argmax(test_probs.squeeze())
+
+              return classes[most_likely_classes], test_probs.squeeze()[most_likely_classes]
 
 The `app` directory also includes a [Dockerfile](https://github.com/teaching-on-testbeds/k8s-ml/blob/main/app/Dockerfile). This file describes how to build a container for this application, including:
 
