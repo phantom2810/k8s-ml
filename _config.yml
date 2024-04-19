@@ -6,4 +6,8 @@ author :
   feedburner : nil
 
 theme: jekyll-theme-cayman
+exclude: 
+ - "*"
+include:
+ - "README.md"
 
