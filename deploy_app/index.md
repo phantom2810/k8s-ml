@@ -44,7 +44,7 @@ Note that a saved model - `model.keras` - is inside this directory.  Then, insid
             return classes[most_likely_classes], test_probs.squeeze()[most_likely_classes]
 
 
-The `app` directory also includes a [Dockerfile](https://github.com/teaching-on-testbeds/k8s-ml/blob/main/app/Dockerfile). This file describes how to build a container for this application, including:
+The `app` directory also includes a [Dockerfile](https://github.com/teaching-on-testbeds/k8s-ml/blob/gh-pages/app/Dockerfile). This file describes how to build a container for this application, including:
 
 
 * what "base" container should be used (we'll use a Python 3.9 base container)
@@ -116,40 +116,3 @@ docker stop $(docker ps -q -f ancestor=node-0:5000/ml-app:0.0.1)
 
 (which uses command substitution to get the ID of any running container using our `ml-app` image, then stops it).
 
-### Transfer a saved model to the remote host
-
-This is a "bring your own model" activity! You should have already trained a model, saved it as `model.keras`, and downloaded your saved model.
-
-Use `scp` to transfer this file to `~/k8s-ml/app` on your "node-0" host.
-
-Then, repeat the steps in the "Containerize the basic web app" and "Deploy the basic web app" sections, i.e. 
-
-```
-docker build -t ml-app:0.0.1 ~/k8s-ml/app
-docker tag ml-app:0.0.1  node-0:5000/ml-app:0.0.1
-docker push node-0:5000/ml-app:0.0.1
-```
-
-and then
-
-```
-docker run -d -p 32000:5000 node-0:5000/ml-app:0.0.1
-```
-
-> **Debugging your service**: if something goes wrong, you can use `docker run -p 32000:5000 node-0:5000/ml-app:0.0.1` to run your service *without* detaching from it, so that you can see output (including error messages).
-
-(For a model that is very large, it may take a few minutes - even up to 10 minutes - before the container is ready to accept requests.)
-
-Use your model to classify an image. Make sure your "deployed" model returns the same result for your custom test image as it did in the Colab notebook. Also note the inference time (the first inference may take much longer than subsequence predictions, so discard the first result.)
-
-Also check the resource usage during inference with
-
-```
-docker stats $(docker ps -q -f ancestor=node-0:5000/ml-app:0.0.1)
-```
-
-When you are finished, stop the container by running:
-
-```
-docker stop $(docker ps -q -f ancestor=node-0:5000/ml-app:0.0.1)
-```

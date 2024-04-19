@@ -2,7 +2,7 @@
 
 In the previous exercise, we deployed a single replica of a Kubernetes pod. But if the load on the service is high, the single pod will have slow response times. We can address this by deploying multiple "replicas" of the pod, and distributing the traffic across them by assigning each incoming request to a pod. This is called **load balancing**.
 
-The manifest file for deploying a load balanced service is named "deployment_lb.yaml", and it is inside the "~/k8s-ml/deploy_lb" directory. You can see it [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/main/deploy_lb/deployment_lb.yaml).
+The manifest file for deploying a load balanced service is named "deployment_lb.yaml", and it is inside the "~/k8s-ml/deploy_lb" directory. You can see it [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/gh-pages/deploy_lb/deployment_lb.yaml).
 
 
 This manifest file defines a Kubernetes service of type `LoadBalancer` with the name "ml-kube-service" and a Kubernetes deployment named "ml-kube-app". There are two major differences between this deployment and the previous deployment:

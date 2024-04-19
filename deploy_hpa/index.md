@@ -4,7 +4,7 @@ When we used load balancing to distribute incoming traffic across multiple pods,
 
 To address this issue, we can use scaling - where the resource deployment changes in response to load on the service. In this exercise, specifically we use **horizontal scaling**, which adds more pods/replicas to handle increasing levels of work, and removes pods when they are not needed. (This is in contrast to **vertical scaling**, which would increase the resources assigned to pods - CPU and memory - to handle increasing levels of work.)
 
-The manifest file for deploying a service with scaling is "deployment_hpa.yaml", and it is inside the "~/k8s-ml/deploy_hpa" directory. You can see it [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/main/deploy_hpa/deployment_hpa.yaml).
+The manifest file for deploying a service with scaling is "deployment_hpa.yaml", and it is inside the "~/k8s-ml/deploy_hpa" directory. You can see it [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/gh-pages/deploy_hpa/deployment_hpa.yaml).
 
 There are two differences between this deployment and the previous deployment:
 

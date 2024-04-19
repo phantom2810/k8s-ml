@@ -13,7 +13,7 @@ What are some benefits of using a container orchestration framework like Kuberne
 
 Although we will eventually deploy pods across all three of our "worker" nodes, our deployment will be managed from the "controller" node, which is "node-0".
 
-To deploy an app on a Kubernetes cluster, we use a manifest file, which describes our deployment. For this exercise, we will use the "deployment_k8s.yaml" file inside the "~/k8s-ml/deploy_k8s" directory, which you can see [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/main/deploy_k8s/deployment_k8s.yaml).
+To deploy an app on a Kubernetes cluster, we use a manifest file, which describes our deployment. For this exercise, we will use the "deployment_k8s.yaml" file inside the "~/k8s-ml/deploy_k8s" directory, which you can see [here](https://github.com/teaching-on-testbeds/k8s-ml/blob/gh-pages/deploy_k8s/deployment_k8s.yaml).
 
 This manifest file defines a Kubernetes service named "ml-kube-service" and a Kubernetes deployment named "ml-kube-app".
 
