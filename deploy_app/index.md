@@ -88,6 +88,13 @@ which will show containers related to the docker register and Kubernetes deploym
 docker ps -f ancestor=node-0:5000/ml-app:0.0.1
 ```
 
+The firewall on the node will block access to our app from outside, so let us temporarily disable it:
+
+```
+sudo systemctl stop firewalld.service
+```
+
+
 Now we can visit our web service and try it out! Run this command on "node-0" to get the URL to use:
 
 ```
