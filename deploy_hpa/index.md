@@ -76,3 +76,9 @@ kubectl get pods -o wide
 
 and verify that (eventually) no pods are running your app.
 
+Also, re-enable the firewall:
+
+```
+sudo systemctl start firewalld.service
+```
+
