@@ -106,7 +106,7 @@ On the next slide, you will prepare a plot with the following subplots, for the 
 
 * Row 1, Column 1: Number of requests over time (from the "Trans" column in "load_output.csv". This value is reported every minute.) This represents the load on the service in this variable load scenario.
 * Row 1, Column 2: Average response time over time (from the "Resp Time" column in "load_output.csv". This value is reported every minute.)
-* Row 1, Column 3: Availability over time (use the "OKAY" column divided by the "Trans" column in "load_output.csv". This value is reported every minute.)
+* Row 1, Column 3: Availability over time (use the "OKAY" column divided by the "OKAY" + "Failed" column in "load_output.csv". This value is reported every minute.)
 
 * Row 2, Column 1: Number of replicas over time (from the "n_replica" column in "resource_usage.csv". This value is reported every 5 seconds.)
 * Row 2, Column 2: CPU over time - from "resource_usage.csv", include one line each for
